@@ -143,7 +143,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Darshit Pipariya**
 - GitHub: [@Darshitpipariya](https://github.com/Darshitpipariya)
-- Email: [Your Email]
+- Email: [darshit2272000@gmail.com](mailto:darshit2272000@gmail.com)
 
 ## 🌟 Show Your Support
 
