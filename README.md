@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Version](https://img.shields.io/badge/version-1.0.0-green.svg)](https://github.com/Darshitpipariya/bitbucket-rca-ai-extension)
 
-![Extension Banner](/Users/darshitpipariya/.gemini/antigravity/brain/f6076ed1-4c11-4236-a0ed-f328585b9e35/chrome_store_marquee_1767290237612.png)
+![Extension Banner](https://github.com/Darshitpipariya/bitbucket-rca-ai-extension/blob/main/icons/icon128.png)
 
 ## ✨ Features
 
