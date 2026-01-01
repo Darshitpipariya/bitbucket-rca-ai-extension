@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BugZilla RCA Helper - Settings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --secondary: #8b5cf6;
+            --success: #10b981;
+            --error: #ef4444;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --bg-glass: rgba(30, 41, 59, 0.7);
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+            --border: rgba(148, 163, 184, 0.1);
+            --border-light: rgba(148, 163, 184, 0.2);
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, #1a1f3a 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: var(--spacing-xl);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .logo svg {
+            color: var(--primary-light);
+            filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.5));
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .card h2 {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-md);
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            font-family: inherit;
+            transition: all var(--transition-base);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .help-text {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: var(--spacing-sm);
+            line-height: 1.5;
+        }
+
+        .help-text a {
+            color: var(--primary-light);
+            text-decoration: none;
+        }
+
+        .help-text a:hover {
+            text-decoration: underline;
+        }
+
+        .button-group {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        button {
+            flex: 1;
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .alert {
+            padding: var(--spacing-md);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-lg);
+            font-size: 0.875rem;
+            display: none;
+        }
+
+        .alert.show {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .alert-success {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #6ee7b7;
+        }
+
+        .alert-error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+        }
+
+        .info-box {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .info-box h3 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary-light);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .info-box p {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .info-box ol {
+            margin-left: var(--spacing-lg);
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .info-box li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: var(--radius-md);
+            margin-top: var(--spacing-sm);
+        }
+
+        .status-indicator.configured {
+            background: rgba(16, 185, 129, 0.1);
+            color: #6ee7b7;
+        }
+
+        .status-indicator.not-configured {
+            background: rgba(239, 68, 68, 0.1);
+            color: #fca5a5;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </div>
+            <h1>Settings</h1>
+            <p class="subtitle">Configure your API keys and preferences</p>
+        </div>
+
+        <div id="alertSuccess" class="alert alert-success"></div>
+        <div id="alertError" class="alert alert-error"></div>
+
+        <div class="card">
+            <h2>🤖 Gemini AI Configuration</h2>
+
+            <div class="info-box">
+                <h3>How to get your Gemini API Key:</h3>
+                <ol>
+                    <li>Visit <a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a>
+                    </li>
+                    <li>Sign in with your Google account</li>
+                    <li>Click "Get API Key" or "Create API Key"</li>
+                    <li>Copy the generated API key and paste it below</li>
+                </ol>
+                <p><strong>Note:</strong> Your API key is stored locally and never shared.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="geminiApiKey">
+                    Gemini API Key
+                    <span id="geminiStatus"></span>
+                </label>
+                <input type="password" id="geminiApiKey" placeholder="Enter your Gemini API key" autocomplete="off" />
+                <p class="help-text">
+                    Required for generating RCA reports.
+                    <a href="https://makersuite.google.com/app/apikey" target="_blank">Get your API key →</a>
+                </p>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn-secondary" id="testGeminiBtn">Test API Key</button>
+                <button type="button" class="btn-primary" id="saveGeminiBtn">Save</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🔐 Bitbucket Configuration (For Private Repos)</h2>
+
+            <div class="info-box">
+                <h3>Bitbucket API Token (For Private Repositories):</h3>
+                <p>To access private repositories, you need to create a Bitbucket API token:</p>
+                <ol>
+                    <li>Go to Bitbucket → Personal Settings → App passwords</li>
+                    <li>Click "Create app password"</li>
+                    <li>Give it a label (e.g., "RCA Helper")</li>
+                    <li>Select permissions: <strong>Repositories: Read</strong></li>
+                    <li>Click "Create" and copy the generated token</li>
+                </ol>
+                <p><strong>Note:</strong> You'll also need your Atlassian account email (found under Email Aliases in
+                    Personal settings).</p>
+            </div>
+
+            <div class="form-group">
+                <label for="bitbucketEmail">
+                    Atlassian Account Email
+                    <span id="bitbucketEmailStatus"></span>
+                </label>
+                <input type="email" id="bitbucketEmail" placeholder="Enter your Atlassian account email"
+                    autocomplete="email" />
+                <p class="help-text">
+                    Your Atlassian account email (listed under Email Aliases in Bitbucket Personal settings).
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="bitbucketToken">
+                    Bitbucket API Token
+                    <span id="bitbucketStatus"></span>
+                </label>
+                <input type="password" id="bitbucketToken" placeholder="Enter your Bitbucket API token"
+                    autocomplete="off" />
+                <p class="help-text">
+                    API token (app password) with "Repositories: Read" permission.
+                </p>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn-secondary" id="clearBitbucketBtn">Clear</button>
+                <button type="button" class="btn-primary" id="saveBitbucketBtn">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="utils/storage.js"></script>
+    <script src="utils/rca-generator.js"></script>
+    <script src="settings.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BugZilla RCA Helper</title>
+  <link rel="stylesheet" href="popup.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-content">
+        <div class="logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h1>BugZilla RCA</h1>
+        </div>
+        <button class="settings-btn" id="settingsBtn" title="Settings">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Chat Container -->
+    <div class="chat-container" id="chatContainer">
+      <div class="welcome-message">
+        <div class="welcome-icon">🔍</div>
+        <h2>Welcome to BugZilla RCA Helper</h2>
+        <p>Paste a Bitbucket Pull Request URL to generate a comprehensive Root Cause Analysis</p>
+        <div class="example">
+          <strong>Example:</strong>
+          <code>https://bitbucket.org/workspace/repo/pull-requests/123</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input Area -->
+    <div class="input-area">
+      <div class="input-wrapper">
+        <input 
+          type="text" 
+          id="urlInput" 
+          placeholder="Paste Bitbucket PR URL here..."
+          autocomplete="off"
+        />
+        <button class="send-btn" id="sendBtn" title="Generate RCA">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="input-footer">
+        <button class="clear-btn" id="clearBtn">Clear History</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="utils/storage.js"></script>
+  <script src="utils/bitbucket.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
