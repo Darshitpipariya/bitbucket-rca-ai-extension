@@ -32,8 +32,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 async function handleGenerateRCA(url) {
     try {
         // Validate URL
-        if (!BitbucketUtils.isValidPRUrl(url)) {
-            throw new Error('Invalid Bitbucket PR URL. Please provide a valid pull request URL.');
+        if (!BitbucketUtils.isValidUrl(url)) {
+            throw new Error('Invalid Bitbucket URL. Please provide a valid pull request or commit URL.');
         }
 
         // Get API keys from storage
@@ -47,20 +47,21 @@ async function handleGenerateRCA(url) {
         console.log('Bitbucket email:', bitbucketEmail);
         const bitbucketApiToken = await StorageUtils.getBitbucketToken();
 
-        // Fetch PR data from Bitbucket
-        console.log('Fetching PR data from Bitbucket...');
-        const prData = await BitbucketUtils.fetchPRData(url, bitbucketEmail, bitbucketApiToken);
+        // Fetch data from Bitbucket (PR or Commit)
+        console.log('Fetching data from Bitbucket...');
+        const data = await BitbucketUtils.fetchData(url, bitbucketEmail, bitbucketApiToken);
 
         // Generate RCA using Gemini AI
         console.log('Generating RCA with Gemini AI...');
-        const rca = await RCAGenerator.generateRCA(prData, geminiApiKey, url);
+        const rca = await RCAGenerator.generateRCA(data, geminiApiKey, url);
 
         return {
             rca: RCAGenerator.formatRCA(rca),
             prData: {
-                title: prData.title,
-                author: prData.author,
-                url: prData.url
+                title: data.title,
+                author: data.author,
+                url: data.url,
+                type: data.type
             }
         };
     } catch (error) {

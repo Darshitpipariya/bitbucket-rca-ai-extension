@@ -87,8 +87,8 @@ async function handleSendMessage() {
     }
 
     // Validate URL
-    if (!BitbucketUtils.isValidPRUrl(url)) {
-        showError('Invalid Bitbucket PR URL. Please provide a valid pull request URL like: https://bitbucket.org/workspace/repo/pull-requests/123');
+    if (!BitbucketUtils.isValidUrl(url)) {
+        showError('Invalid Bitbucket URL. Please provide a valid pull request or commit URL like: https://bitbucket.org/workspace/repo/pull-requests/123 or https://bitbucket.org/workspace/repo/commits/abc123def');
         return;
     }
 
@@ -143,7 +143,7 @@ async function handleSendMessage() {
 }
 
 /**
- * Format RCA message with PR info
+ * Format RCA message with PR or Commit info
  */
 function formatRCAMessage(data) {
     const { rca, prData } = data;
@@ -151,10 +151,10 @@ function formatRCAMessage(data) {
     let message = ``;
     message += rca;
     message += `---\n\n`;
-    message += `**PR:** [${prData.title}](${prData.url})\n`;
+
+    const typeLabel = prData.type === 'commit' ? 'Commit' : 'PR';
+    message += `**${typeLabel}:** [${prData.title}](${prData.url})\n`;
     message += `**Author:** ${prData.author}\n\n`;
-
-
 
     return message;
 }
@@ -316,10 +316,11 @@ async function handleClearHistory() {
     <div class="welcome-message">
       <div class="welcome-icon">🔍</div>
       <h2>Welcome to BugZilla RCA Helper</h2>
-      <p>Paste a Bitbucket Pull Request URL to generate a comprehensive Root Cause Analysis</p>
+      <p>Paste a Bitbucket Pull Request or Commit URL to generate a comprehensive Root Cause Analysis</p>
       <div class="example">
-        <strong>Example:</strong>
-        <code>https://bitbucket.org/workspace/repo/pull-requests/123</code>
+        <strong>Examples:</strong><br>
+        <code>https://bitbucket.org/workspace/repo/pull-requests/123</code><br>
+        <code>https://bitbucket.org/workspace/repo/commits/abc123def</code>
       </div>
     </div>
   `;

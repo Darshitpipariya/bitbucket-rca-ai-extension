@@ -17,6 +17,7 @@ const CONFIG = {
 
   // URL Patterns
   BITBUCKET_PR_PATTERN: /^https?:\/\/bitbucket\.org\/([^\/]+)\/([^\/]+)\/pull-requests\/(\d+)/,
+  BITBUCKET_COMMIT_PATTERN: /^https?:\/\/bitbucket\.org\/([^\/]+)\/([^\/]+)\/commits?\/([a-f0-9]+)/,
 
   // UI Constants
   MAX_CHAT_HISTORY: 50,
